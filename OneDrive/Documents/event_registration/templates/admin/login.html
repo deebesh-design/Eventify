@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="glass-form text-center position-relative overflow-hidden">
+                <!-- Decorative element -->
+                <div class="position-absolute top-0 start-0 w-100 bg-primary" style="height: 5px;"></div>
+
+                <div class="mb-4 mt-3">
+                    <div class="bg-primary bg-opacity-10 d-inline-flex p-3 rounded-circle text-primary mb-3">
+                        <i class="fa-solid fa-user-lock fa-2x"></i>
+                    </div>
+                    <h2 class="fw-bold">Admin Portal</h2>
+                    <p class="text-muted">Sign in to manage events and registrations</p>
+                </div>
+
+                <form action="{{ url_for('admin_login') }}" method="POST" class="text-start">
+                    <div class="mb-3">
+                        <label for="username" class="form-label fw-semibold">Admin Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light text-muted border-end-0"><i
+                                    class="fa-regular fa-user"></i></span>
+                            <input type="text" class="form-control border-start-0 ps-0" id="username" name="username"
+                                placeholder="Enter username" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label fw-semibold">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light text-muted border-end-0"><i
+                                    class="fa-solid fa-lock"></i></span>
+                            <input type="password" class="form-control border-start-0 ps-0" id="password"
+                                name="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                        Login to Dashboard <i class="fa-solid fa-arrow-right-to-bracket ms-2"></i>
+                    </button>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('home') }}" class="text-secondary text-decoration-none small">
+                            <i class="fa-solid fa-arrow-left me-1"></i> Return to Homepage
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="text-center mt-4 text-muted small">
+                <p><i class="fa-solid fa-circle-info me-1"></i> Default credentials for demo:<br><strong
+                        class="text-dark">admin / admin123</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

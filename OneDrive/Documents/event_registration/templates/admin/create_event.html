@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <div class="mb-4">
+                <a href="{{ url_for('admin_dashboard') }}" class="text-decoration-none text-secondary">
+                    <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+                </a>
+            </div>
+
+            <div class="glass-form border-0">
+                <h3 class="fw-bold mb-4">Create New Event</h3>
+
+                <form action="{{ url_for('admin_event_create') }}" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="event_name" class="form-label fw-semibold">Event Name</label>
+                        <input type="text" class="form-control" id="event_name" name="event_name"
+                            placeholder="e.g. Summer Tech Conference" required>
+                        <div class="invalid-feedback">Please enter an event name.</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="date" class="form-label fw-semibold">Date & Time</label>
+                            <input type="text" class="form-control" id="date" name="date"
+                                placeholder="e.g. Oct 15, 2024 at 10 AM" required>
+                            <div class="invalid-feedback">Please provide a date.</div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="location" class="form-label fw-semibold">Location</label>
+                            <input type="text" class="form-control" id="location" name="location"
+                                placeholder="e.g. Convention Center, NY" required>
+                            <div class="invalid-feedback">Please provide a location.</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="description" class="form-label fw-semibold">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="5"
+                            placeholder="Provide details about the event..." required></textarea>
+                        <div class="invalid-feedback">Please provide an event description.</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold rounded-3 shadow-sm">
+                        <i class="fa-solid fa-calendar-plus me-2"></i> Publish Event
+                    </button>
+                    <a href="{{ url_for('admin_dashboard') }}"
+                        class="btn btn-light btn-lg w-100 mt-2 text-muted fw-bold rounded-3">
+                        Cancel
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simple form validation styling
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+{% endblock %}
